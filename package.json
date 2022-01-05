@@ -1,0 +1,10 @@
+{
+    "name": "pinatastore",
+    "version": "0.1.0",
+    "type": "module",
+    "main": "pinatastore.js",
+    "dependencies": {
+        "axios": "^0.24.0",
+        "uuid": "^8.3.2"
+    }
+}
