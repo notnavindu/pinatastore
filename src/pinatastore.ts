@@ -111,7 +111,7 @@ export class Pinatastore {
   async getCollectionHashes(collection: string) {
     return axios
       .get(
-        `https://api.pinata.cloud/data/pinList?metadata[keyvalues]={"collection":{"value":"users", "op": "eq"}}&status=pinned`,
+        `https://api.pinata.cloud/data/pinList?metadata[keyvalues]={"collection":{"value":"${collection}", "op": "eq"}}&status=pinned`,
         {
           headers: {
             pinata_api_key: this.apiKey,
@@ -121,6 +121,7 @@ export class Pinatastore {
       )
       .then((res) => {
         let finalData = [];
+        console.log(res.data);
         if (res.data.count > 0) {
           for (let i = 0; i < res.data.count; i++) {
             finalData.push(res.data.rows[i].ipfs_pin_hash);
