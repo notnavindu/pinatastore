@@ -57,13 +57,47 @@ export class Pinatastore {
         }
       )
       .then((res) => {
-        return axios
-          .get(
-            `https://gateway.pinata.cloud/ipfs/${res.data.rows[0].ipfs_pin_hash}`
-          )
-          .then((res) => {
-            return res.data.data;
-          });
+        return getContent(
+          res.data.rows[0].ipfs_pin_hash,
+          res.data.rows[0].metadata.keyvalues.document
+        );
+      });
+  }
+
+  /**
+   * Returns an array of documents
+   * @param {string} collection Name of the collection
+   * @returns Array of documents
+   */
+  async getCollection(collection: string) {
+    // const path = `${collection}/${document}`;
+
+    return axios
+      .get(
+        `https://api.pinata.cloud/data/pinList?metadata[keyvalues]={"collection":{"value":"users", "op": "eq"}}&status=pinned`,
+        {
+          headers: {
+            pinata_api_key: this.apiKey,
+            pinata_secret_api_key: this.apiSecret,
+          },
+        }
+      )
+      .then((res) => {
+        let finalData = [];
+        if (res.data.count > 0) {
+          for (let i = 0; i < res.data.count; i++) {
+            finalData.push(
+              getContent(
+                res.data.rows[i].ipfs_pin_hash,
+                res.data.rows[i].metadata.keyvalues.document
+              )
+            );
+          }
+        }
+
+        return Promise.all(finalData).then((res) => {
+          return res;
+        });
       });
   }
 
@@ -167,7 +201,10 @@ async function pinData(
   let pin: any = {
     pinataMetadata: {
       name: path,
-      keyvalues: {},
+      keyvalues: {
+        collection: collection,
+        document: document,
+      },
     },
     pinataContent: {
       pushId: uuidv4(),
@@ -178,7 +215,7 @@ async function pinData(
   primaryKeys.forEach((pair) => {
     pin.pinataMetadata.keyvalues[pair["keyName"]] = pair["keyValue"];
   });
-  console.log(pin);
+
   return await axios.post(
     "https://api.pinata.cloud/pinning/pinJSONToIPFS",
     pin,
@@ -200,6 +237,14 @@ async function unpinData(cid: string, apiKey: string, apiSecret: string) {
   });
 }
 
+async function getContent(cid: string, document: string) {
+  return axios.get(`https://gateway.pinata.cloud/ipfs/${cid}`).then((res) => {
+    return {
+      documentId: document,
+      data: res.data.data,
+    };
+  });
+}
 interface PrimaryKey {
   keyName: string;
   keyValue: string;

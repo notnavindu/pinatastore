@@ -3,6 +3,9 @@ A  simple module to store and retrieve simple JSON data from a decentralized dat
 
 _Note: This project was made for educational puposes only. But feel free to use it in your projects_
 
+## Demo
+(TODO)
+
 ## Coming soon
 - Query by primary key
 
@@ -22,7 +25,7 @@ yarn add pinatastore
 ```
 
 ## Setup
-```
+```javascript
 import { Pinatastore } from "pinatastore"
 const db = new Pinatastore(API_KEY, API_SECRET)
 ```
@@ -41,7 +44,7 @@ Adds data to a given collection. This will auto-generate a unique ID for the doc
   - (Coming soon)
 
 ### Example
-```
+```javascript
 db.add("users", {
     name: "John",
     age: 34
@@ -63,11 +66,54 @@ set() will create a new document or rewrite the existing document of the given I
   - 
 
 ### Example
-```
+```javascript
 db.set("cities", "london", {
     population: "8.982 million"
 });
 ```
+
+`db.getDoc(collection, document)` ➔ Returns the document data
+
+Get data of the given document
+
+- collection `String`
+  - Name of the collection
+- document `String`
+  - Name of the document
+
+```javascript
+db.getDoc("cities", "london")
+
+// returns
+// {
+//  documentId: 'cities',
+//  data: { population: '8.982 million' }
+// }
+```
+
+`db.getCollection(collection)` ➔ Returns an array of documents
+
+Get all the documents of a collection
+
+- collection `String`
+  - Name of the collection
+
+```javascript
+db.getCollection("users")
+
+// returns
+// [
+//  {
+//    documentId: 'c4422589-0153-43eb-926a-71e2576aa1ad',
+//    data: { name: 'John', age: 34 }
+//  },
+//  {
+//    documentId: '967b91f4-e5f4-46fc-a26c-fdb881f8ccaa',
+//    data: { name: 'Anna', age: 23 }
+//  }
+]
+```
+
 
 
 ---
