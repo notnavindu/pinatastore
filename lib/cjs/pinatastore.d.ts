@@ -18,7 +18,7 @@ export declare class Pinatastore {
     getDoc(collection: string, document: string): Promise<{
         documentId: string;
         data: any;
-    }>;
+    } | null>;
     /**
      * Returns an array of documents
      * @param {string} collection Name of the collection
@@ -28,6 +28,12 @@ export declare class Pinatastore {
         documentId: string;
         data: any;
     }[]>;
+    /**
+     * Returns an array of the ipfs hashes of the documents. These can be used to retrieve data on the client side
+     * @param {string} collection Name of the collection
+     * @returns Array of ipfs hashes
+     */
+    getCollectionHashes(collection: string): Promise<any[]>;
     /**
      * Adds data to a given collection. This will auto-generate a unique ID for the document
      * @param {string} collection Name of the collection
@@ -44,7 +50,7 @@ export declare class Pinatastore {
      * @param {Array<PrimaryKey>} [primaryKeys] An array of primary key(s) eg: [{keyName: "uid", keyValue: "abcd123"}]
      * @returns ipfs hash of the document
      */
-    set(collection: string, document: string, data: Object, primaryKeys?: Array<PrimaryKey>): Promise<void>;
+    set(collection: string, document: string, data: Object, primaryKeys?: Array<PrimaryKey>): Promise<any>;
 }
 interface PrimaryKey {
     keyName: string;

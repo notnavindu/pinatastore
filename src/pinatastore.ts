@@ -74,8 +74,6 @@ export class Pinatastore {
    * @returns Array of documents
    */
   async getCollection(collection: string) {
-    // const path = `${collection}/${document}`;
-
     return axios
       .get(
         `https://api.pinata.cloud/data/pinList?metadata[keyvalues]={"collection":{"value":"users", "op": "eq"}}&status=pinned`,
@@ -102,6 +100,34 @@ export class Pinatastore {
         return Promise.all(finalData).then((res) => {
           return res;
         });
+      });
+  }
+
+  /**
+   * Returns an array of the ipfs hashes of the documents. These can be used to retrieve data on the client side
+   * @param {string} collection Name of the collection
+   * @returns Array of ipfs hashes
+   */
+  async getCollectionHashes(collection: string) {
+    return axios
+      .get(
+        `https://api.pinata.cloud/data/pinList?metadata[keyvalues]={"collection":{"value":"users", "op": "eq"}}&status=pinned`,
+        {
+          headers: {
+            pinata_api_key: this.apiKey,
+            pinata_secret_api_key: this.apiSecret,
+          },
+        }
+      )
+      .then((res) => {
+        let finalData = [];
+        if (res.data.count > 0) {
+          for (let i = 0; i < res.data.count; i++) {
+            finalData.push(res.data.rows[i].ipfs_pin_hash);
+          }
+        }
+
+        return finalData;
       });
   }
 
