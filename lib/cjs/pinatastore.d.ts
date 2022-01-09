@@ -20,10 +20,9 @@ export declare class Pinatastore {
         data: any;
     }>;
     /**
-     * Returns the data of the given document
+     * Returns an array of documents
      * @param {string} collection Name of the collection
-     * @param {string} document Name/ID of the Document
-     * @returns data of the specified document
+     * @returns Array of documents
      */
     getCollection(collection: string): Promise<{
         documentId: string;

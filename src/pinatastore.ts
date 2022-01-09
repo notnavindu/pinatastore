@@ -57,10 +57,14 @@ export class Pinatastore {
         }
       )
       .then((res) => {
-        return getContent(
-          res.data.rows[0].ipfs_pin_hash,
-          res.data.rows[0].metadata.keyvalues.document
-        );
+        if (res.data.count > 0) {
+          return getContent(
+            res.data.rows[0].ipfs_pin_hash,
+            res.data.rows[0].metadata.keyvalues.document
+          );
+        } else {
+          return null;
+        }
       });
   }
 
@@ -142,7 +146,7 @@ export class Pinatastore {
   ) {
     const filename = `${collection}/${document}.json`;
 
-    axios
+    return axios
       .get(
         `https://api.pinata.cloud/data/pinList?metadata[name]=${filename}&status=pinned`,
         {
