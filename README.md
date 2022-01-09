@@ -4,10 +4,11 @@ A  simple module to store and retrieve simple JSON data from a decentralized dat
 _Note: This project was made for educational puposes only. But feel free to use it in your projects_
 
 ## Demo
-(TODO)
+(Coming soon)
 
 ## Coming soon
 - Query by primary key
+- A demo
 
 ## Use this if ...
 - Your data is not complex
