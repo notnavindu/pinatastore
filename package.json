@@ -1,6 +1,6 @@
 {
     "name": "pinatastore",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "type": "commonjs",
     "main": "lib/cjs/pinatastore.js",
     "module": "lib/esm/pinatastore.js",
@@ -19,5 +19,29 @@
         "@types/uuid": "^8.3.3",
         "jsdoc-to-markdown": "^7.1.0",
         "typescript": "^4.5.4"
-    }
+    },
+    "homepage": "https://github.com/notnavindu/pinatastore#readme",
+    "bugs": {
+        "url" : "https://github.com/notnavindu/pinatastore/issues",
+        "email" : "navanavi3@gmail.com"
+      },
+
+      "author": {
+        "name": "Navindu Amarakoon",
+        "url": "https://www.navindu.me/",
+        "email": "navanavi3@gmail.com"
+      },
+      "license": "GPL-3.0-or-later",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/notnavindu/pinatastore"
+      },
+      "keywords": [
+        "pinata",
+        "ipfs",
+        "firebase-like",
+        "decentralized",
+        "web3",
+        "web3 storage"
+      ]
 }
