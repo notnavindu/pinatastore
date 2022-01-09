@@ -1,7 +1,7 @@
 # 🦄 Pinatastore
-A  simple module to store and retrieve simple JSON data from a decentralized databse. (Pinata IPFS) Pinatastore uses a structure similar to firebase and stores them in ipfs through Pinata. (Collections and Documents)
+A  simple module to store and retrieve simple JSON data from a decentralized databse. (Pinata IPFS) Pinatastore uses a structure similar to firebase and stores them in ipfs through Pinata. (Collections and Documents) Pinatastore is basically a wrapper on top of the pinata API to make it easier to work with JSON data. 
 
-_Note: This project was made for educational puposes only. But feel free to use it in your projects_
+_Note: This project was made for educational puposes. But feel free to use it in your projects_
 
 ## Demo
 (Coming soon)
@@ -12,7 +12,7 @@ _Note: This project was made for educational puposes only. But feel free to use 
 
 ## Use this if ...
 - Your data is not complex
-- You plan to use this on the server side
+- Your project is not large scale
 - Your data doesn't need encryption
 
 
