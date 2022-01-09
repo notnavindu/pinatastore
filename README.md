@@ -4,16 +4,18 @@ A  simple module to store and retrieve simple JSON data from a decentralized dat
 _Note: This project was made for educational puposes. But feel free to use it in your projects_
 
 ## Demo
-(Coming soon)
+Hosted - [https://colorstore.vercel.app/](https://colorstore.vercel.app/)
+
+Repo - [https://github.com/notnavindu/pinatastore-demo](https://github.com/notnavindu/pinatastore-demo)
 
 ## Coming soon
 - Query by primary key
-- A demo
 
 ## Use this if ...
 - Your data is not complex
 - Your project is not large scale
 - Your data doesn't need encryption
+- Your data can be publicly stored
 
 
 ## Installation
