@@ -83,7 +83,7 @@ Get data of the given document
   - Name of the document
 
 ```javascript
-db.getDoc("cities", "london")
+db.getDoc("cities", "london");
 
 // returns
 // {
@@ -100,7 +100,7 @@ Get all the documents of a collection
   - Name of the collection
 
 ```javascript
-db.getCollection("users")
+db.getCollection("users");
 
 // returns
 // [
@@ -113,6 +113,24 @@ db.getCollection("users")
 //    data: { name: 'Anna', age: 23 }
 //  }
 ]
+```
+
+
+`db.getCollectionHashes(collection)` ➔ Returns an array of ipfs hashes
+
+Returns an array of the ipfs hashes of the documents. These can be used to retrieve data on the client side. This can be useful if you have a server with limited performance.
+
+- collection `String`
+  - Name of the collection
+
+```javascript
+db.getCollectionHashes("users");
+
+// returns
+// [
+//   'QmNnThL8PzHBsY6uRYWgGheN2wxvfFt13uwunw8rrNvJhh',
+//   'QmZ6pv1jNnmBaASYkKEXAAJG7cWu2zNrDxbf7geiHuJ9UE' 
+// ]
 ```
 
 
