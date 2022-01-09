@@ -1,4 +1,4 @@
-# 🦄 Pinatastore
+# 🦄 Pinatastore [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnotnavindu%2Fpinatastore&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 A  simple module to store and retrieve simple JSON data from a decentralized databse. (Pinata IPFS) Pinatastore uses a structure similar to firebase and stores them in ipfs through Pinata. (Collections and Documents) Pinatastore is basically a wrapper on top of the pinata API to make it easier to work with JSON data. 
 
 _Note: This project was made for educational puposes. But feel free to use it in your projects_
